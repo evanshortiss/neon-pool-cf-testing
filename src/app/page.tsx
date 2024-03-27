@@ -1,10 +1,12 @@
+import { db } from "@/lib/drizzle";
 import { pool } from "@/lib/neon";
+import { sql } from "drizzle-orm";
 import Image from "next/image";
 
 export const runtime = "edge"
 
 export default async function Home() {
-  const result = await pool.query("SELECT 1 + 1");
+  const result = await db.execute(sql`SELECT 1 + 1`);
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
