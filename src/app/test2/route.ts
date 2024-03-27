@@ -6,6 +6,6 @@ import { NextResponse } from "next/server";
 export async function GET() {
   unstable_noStore()
 
-    const posts = await db.execute(sql`SELECT * FROM NOW()`	);
-    return NextResponse.json(posts);
-  }
+  const posts = await db.execute(sql`SELECT * FROM NOW()`	);
+  return NextResponse.json(posts);
+}
