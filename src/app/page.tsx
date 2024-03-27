@@ -1,5 +1,4 @@
 import { db } from "@/lib/drizzle";
-import { pool } from "@/lib/neon";
 import { sql } from "drizzle-orm";
 import Image from "next/image";
 
