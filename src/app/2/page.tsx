@@ -2,8 +2,6 @@ import { db } from "@/lib/drizzle";
 import { sql } from "drizzle-orm";
 import Image from "next/image";
 
-export const runtime = "edge"
-
 export default async function Home() {
   const result = await db.execute(sql`SELECT 1 + 1`);
   return (
