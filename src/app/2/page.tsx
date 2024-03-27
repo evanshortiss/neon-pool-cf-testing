@@ -1,8 +1,11 @@
 import { db } from "@/lib/drizzle";
 import { sql } from "drizzle-orm";
+import { unstable_noStore } from "next/cache";
 import Image from "next/image";
 
 export default async function Home() {
+  unstable_noStore()
+
   const result = await db.execute(sql`SELECT 1 + 1`);
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">

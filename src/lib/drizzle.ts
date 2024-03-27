@@ -13,10 +13,6 @@ if (!process.env.VERCEL_ENV) {
     neonConfig.pipelineConnect = false;
   }
 
-
-if (process.env.VERCEL_ENV) {
-    neonConfig.webSocketConstructor = ws;
-}
   
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 export const db = drizzle(pool)
