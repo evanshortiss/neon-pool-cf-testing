@@ -7,6 +7,8 @@ export const runtime = "edge"
 export default async function Home() {
   unstable_noStore()
   const result = await pool.query(`SELECT 1 + 1`);
+  await pool.end()
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
