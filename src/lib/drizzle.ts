@@ -7,7 +7,11 @@ if (!process.env.VERCEL_ENV) {
   neonConfig.pipelineTLS = false;
   neonConfig.pipelineConnect = false;
 }
-
   
-export const pool = new Pool({ connectionString: process.env.DATABASE_URL });
-export const db = drizzle(pool)
+// export const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+// export const db = drizzle(pool)
+
+export const getDb = () => {
+  const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+  return drizzle(pool)
+}
