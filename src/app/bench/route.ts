@@ -7,7 +7,8 @@ export const runtime=   "edge";
 
 const getTime = async () => {
   const start = Date.now();
-  await getDb().execute(sql`SELECT * FROM users;`);
+  await using connection = getDb()
+  await connection.db.execute(sql`SELECT * FROM users;`);
   const end = Date.now();
   return end - start;
 }

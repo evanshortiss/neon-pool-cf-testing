@@ -9,6 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@clerk/clerk-sdk-node": "^4.13.11",
+    "@clerk/nextjs": "^4.29.9",
+    "@liveblocks/client": "^1.11.0",
+    "@liveblocks/node": "^1.11.0",
+    "@liveblocks/react": "^1.9.7",
     "@neondatabase/serverless": "^0.9.0",
     "@uploadthing/react": "^6.4.1",
     "drizzle-orm": "^0.30.4",

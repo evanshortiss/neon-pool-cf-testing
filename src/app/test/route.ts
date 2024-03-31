@@ -7,6 +7,7 @@ export const runtime=   "edge";
 
 export async function GET() {
   unstable_noStore()
-  const posts = await getDb().execute(sql`SELECT * FROM NOW()`	);
+  await using connection = getDb()
+  const posts = await connection.db.execute(sql`SELECT * FROM NOW()`	);
   return NextResponse.json(posts);
 }

@@ -1,13 +1,20 @@
 import { getDb } from "@/lib/drizzle";
+import { Liveblocks } from "@liveblocks/node";
 import { sql } from "drizzle-orm";
 import { unstable_noStore } from "next/cache";
 import Image from "next/image";
 
 export const runtime = "edge"
 
+const liveblocks = new Liveblocks({
+  secret: "sk_prod_xxxxxxxxxxxxxxxxxxxxxxxx",
+});
+
 export default async function Home() {
   unstable_noStore()
-  const result = await getDb().execute(sql`SELECT 1 + 1`);
+  await using connection = getDb()
+  const result = await connection.db.execute(sql`SELECT 1 + 1`);
+  await liveblocks.broadcastEvent("test", { hello: "world" })
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">

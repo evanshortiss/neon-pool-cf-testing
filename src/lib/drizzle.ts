@@ -13,5 +13,13 @@ if (!process.env.VERCEL_ENV) {
 
 export const getDb = () => {
   const pool = new Pool({ connectionString: process.env.DATABASE_URL });
-  return drizzle(pool)
+  return {
+    db: drizzle(pool),
+    [Symbol.asyncDispose]: async () => {
+      console.log('disposing pool')
+      return await pool.end()
+    }
+  }
 }
+
+export const { db } = getDb();
